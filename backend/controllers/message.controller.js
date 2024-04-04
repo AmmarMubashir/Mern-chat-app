@@ -34,9 +34,7 @@ export const sendMessages = async (req, res) => {
 
     await Promise.all([conversation.save(), newMessage.save()]); // this will run all promise in parallel
 
-    res.status(201).json({
-      newMessage,
-    });
+    res.status(201).json(newMessage);
   } catch (error) {
     console.log("Error in sendMessages controller", error.message);
     res.status(500).json({
@@ -46,15 +44,15 @@ export const sendMessages = async (req, res) => {
 };
 export const getMessages = async (req, res) => {
   try {
-    const { id: userToChat } = req.params;
+    const { id: userToChatId } = req.params;
     const senderId = req.user._id;
 
     const conversation = await Conversation.findOne({
-      participants: { $all: [senderId, userToChat] },
+      participants: { $all: [senderId, userToChatId] },
     }).populate("messages"); // NOT REFERENCE BUT ACTUAL MESSAGES
 
     if (!conversation) {
-      res.status(500).json([]);
+      return res.status(200).json([]);
     }
 
     const messages = conversation.messages;
