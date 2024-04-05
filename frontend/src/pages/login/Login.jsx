@@ -15,14 +15,14 @@ const Login = () => {
   };
   return (
     <div className="flex flex-col justify-center items-center min-w-96 mx-auto">
-      <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 backdrop-filter backdrop-blur-lg bg-opacity-0">
+      <div className="w-full p-6 rounded-lg shadow-md bg-blue-300 backdrop-filter backdrop-blur-lg bg-opacity-[0.2]">
         <h1 className="text-3xl font-semibold text-center text-gray-300">
           Login <span className="text-blue-500">ChatApp</span>
         </h1>
         <form onSubmit={loginHandler}>
           <div>
             <label className="label p-2">
-              <span className="text-base label-text">Username</span>
+              <span className="text-base label-text text-white">Username</span>
             </label>
             <input
               type="text"
@@ -36,7 +36,7 @@ const Login = () => {
           </div>
           <div>
             <label className="label ">
-              <span className="text-base label-text">password</span>
+              <span className="text-base label-text text-white">password</span>
             </label>
             <input
               type="password"
@@ -50,7 +50,7 @@ const Login = () => {
           </div>
           <Link
             to="/signup"
-            className="text-sm hover:underline hover:text-blue-600 mt-2 inline-block"
+            className="text-sm hover:underline text-white hover:text-blue-600 mt-2 inline-block"
           >
             {"Don't"} have an account?
           </Link>
